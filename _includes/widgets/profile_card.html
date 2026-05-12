@@ -1,27 +1,30 @@
 <div class="row">
     <div class="col">
         <div class="card border-0 mt-3 shadow-sm bg-white">
-            <div class="card-body pt-5">
+            <div class="card-body profile-card-body">
                 <div class="row">
                     <div class="col">
                         {% if site.data.profile.portrait_url %}
-                        <!-- When the screen is wider than md, float the portrait on the right -->
-                        <!-- <div class="figure float-right ml-4 mb-4 d-none d-md-block"> -->
                         <div class="text-center mb-3">
+                          <div class="profile-portrait-frame mx-auto">
                             <img 
                                 src="{{ site.data.profile.portrait_url | relative_url }}" 
-                                class="figure-img img-fluid img-thumbnail" 
-                                style="height: 300px;"
+                                class="profile-portrait" 
+                                alt="{{ site.data.profile.primary_name }}"
                                 data-toggle="tooltip" 
                                 data-placement="top"
                                 title="{{ site.data.profile.portrait_caption }}">
+                          </div>
                         </div>
                         {% endif %}
 
                         <div class="d-flex justify-content-center w-100 text-center mb-1">
                             <div class="h2">
                                 <!-- <span style="font-weight: 600;">{{ site.data.profile.primary_name }}</span> <small>{{ site.data.profile.secondary_name }}</small> -->
-                                {{ site.data.profile.primary_name }} <small>{{ site.data.profile.secondary_name }}</small>
+                                <span>{{ site.data.profile.primary_name }}</span>
+                                {% if site.data.profile.secondary_name %}
+                                <div class="h4 font-weight-normal mt-1 mb-0">{{ site.data.profile.secondary_name }}</div>
+                                {% endif %}
                             </div>
                             <!-- {% if site.data.profile.portrait_url %}
                             <div class="ml-auto d-md-none">
@@ -47,13 +50,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col text-center" style="font-size: 1.2rem">
+                    <div class="col text-center profile-social-links">
                         <!-- <a class="pr-3 no-break" href="mailto:{{ site.data.profile.email | encode_email }}">
                             <i class="fas fa-at"></i> <span class="email-text">{{ site.data.profile.email | replace: "@", "(at)" }}</span>
                         </a> -->
 
                         {% if site.data.profile.cv_link %}
-                            <a class="pr-3 no-break" target="_blank" href="{{ site.data.profile.cv_link | relative_url }}">
+                            <a class="no-break" target="_blank" href="{{ site.data.profile.cv_link | relative_url }}">
                                 <i class="fas fa-file-alt"></i>
                             </a>
                         {% endif %}
@@ -64,25 +67,25 @@
                         {%- else -%}
                         {%- assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: site.data.profile.gscholar -%}
                         {%- endif -%}
-                        <a class="pr-3 no-break" target="_blank" href="{{ gscholar_url }}">
+                        <a class="no-break" target="_blank" href="{{ gscholar_url }}">
                             <i class="fab fa-google-scholar"></i>
                         </a>
                         {% endif %}
                         
                         {% if site.data.profile.github %}
-                        <a class="pr-3 no-break" target="_blank" href="https://github.com/{{ site.data.profile.github }}">
+                        <a class="no-break" target="_blank" href="https://github.com/{{ site.data.profile.github }}">
                             <i class="fab fa-github"></i>
                         </a>
                         {% endif %}
 
                         {% if site.data.profile.wechat_qrcode %}
-                        <a class="pr-3 no-break" data-toggle="modal" data-target="#modal-wechat">
+                        <a class="no-break" data-toggle="modal" data-target="#modal-wechat">
                             <i class="fab fa-weixin"></i> WeChat
                         </a>
                         {% endif %}
 
                         {% if site.data.profile.twitter %}
-                        <a class="pr-3 no-break" target="_blank" href="https://twitter.com/{{ site.data.profile.twitter }}">
+                        <a class="no-break" target="_blank" href="https://twitter.com/{{ site.data.profile.twitter }}">
                             <i class="fab fa-twitter"></i> Twitter
                         </a>
                         {% endif %}
@@ -93,11 +96,6 @@
                         </a>
                         {% endif %}
 
-                        {% if site.data.profile.orcid %}
-                        <a class="pr-3 no-break" target="_blank" href="https://orcid.org/{{ site.data.profile.orcid }}">
-                            <i class="fab fa-orcid"></i> ORCID
-                        </a>
-                        {% endif %}
                     </div>
                 </div>
             </div>

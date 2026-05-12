@@ -59,11 +59,68 @@ h1, h2, h3, h4, h5, h6,
 
 .text-profile-position {
     font-weight: 400;
+    line-height: 1.55;
 }
 
 .text-profile-bio {
     /* font-family: "Raleway"; */
     font-weight: 400;
+    line-height: 1.65;
+}
+
+.text-profile-bio p {
+    margin-bottom: 0.85rem;
+}
+
+.text-profile-bio p:last-child {
+    margin-bottom: 0;
+}
+
+.profile-card-body {
+    padding: 1.5rem 1.25rem 1.25rem;
+}
+
+.profile-portrait-frame {
+    width: clamp(148px, 62%, 184px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    padding: 5px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
+}
+
+.profile-portrait {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    font-size: 1.12rem;
+}
+
+.profile-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    color: #0b68a8;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.profile-social-links a:hover {
+    background-color: #eef5fb;
+    text-decoration: none;
+    transform: translateY(-1px);
 }
 
 .navbar {

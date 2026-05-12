@@ -5,12 +5,10 @@
       <div class="col-12 col-lg-10">
         <div class="row my-3">
           <div class="col-12">
-            <div class="text-muted">
-              <small>
-                &copy; 2025 Shiwon Kim. Site powered by {{ site.data.display.footer_text }}.<br>
-                Last updated: {{ "now" | date: "%b %Y" }}
-              </small>
-            </div>
+            <small class="text-muted d-flex justify-content-between align-items-center flex-wrap">
+              <span>&copy; {{ "now" | date: "%Y" }} Yongqiang Huang. Site powered by {{ site.data.display.footer_text }}.</span>
+              <span class="ml-sm-3">Last updated: {{ "now" | date: "%b %Y" }}</span>
+            </small>
           </div>
           <!-- <div class="col-6">
             <div class="text-right text-muted">

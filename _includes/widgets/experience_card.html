@@ -4,7 +4,7 @@
         {% if site.data.profile.experience %}
             {% for item in site.data.profile.experience %}
             <li class="media mb-2">
-                <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" style="width: 16px; margin-top: 3px" class="mr-1">
+                <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" style="max-width: 36px; max-height: 18px; width: auto; height: auto; margin-top: 3px" class="mr-1">
                 <div class="media-body">
                     <div class="d-flex">
                         <div>{{ item.name }}</div>

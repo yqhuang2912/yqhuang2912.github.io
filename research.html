@@ -1,7 +1,8 @@
 ---
 layout: default
-title : Research
-navbar_title: Research
+title : Publications
+navbar_title: Publications
+permalink: /publications/
 body_attr: >-
   data-spy="scroll" data-target="#navbar-year" data-offset="100"
 ---
@@ -85,28 +86,29 @@ body_attr: >-
           <span class="filter-tab" data-type="publication" onclick="selectType(this, 'publication')">
             <i class="fas fa-book-open mr-1"></i> Publications
           </span>
-          <span class="filter-tab" data-type="project" onclick="selectType(this, 'project')">
-            <i class="fas fa-lightbulb mr-1"></i> Projects
-          </span>
         </div>
       </div>
 
       <!-- TAG MULTI-FILTER -->
       <div class="mb-3 d-flex flex-wrap align-items-center">
         <div id="tagContainer" class="d-flex flex-wrap">
+          <div class="tag-filter" onclick="toggleTagFilter('federated-learning')"># federated learning</div>
+          <div class="tag-filter" onclick="toggleTagFilter('image-generation')"># image generation</div>
+          <div class="tag-filter" onclick="toggleTagFilter('ai-in-healthcare')"># AI in healthcare</div>
           <div class="tag-filter" onclick="toggleTagFilter('medical-imaging')"># medical imaging</div>
-          <div class="tag-filter" onclick="toggleTagFilter('continual-learning')"># continual learning</div>
-          <div class="tag-filter" onclick="toggleTagFilter('few-shot-learning')"># few-shot learning</div>
-          <div class="tag-filter" onclick="toggleTagFilter('neural-collapse')"># neural collapse</div>
-          <div class="tag-filter" onclick="toggleTagFilter('object-detection')"># object detection</div>
+          <div class="tag-filter" onclick="toggleTagFilter('large-models')"># large models</div>
           <div class="tag-filter" onclick="toggleTagFilter('vision-language')"># vision-language</div>
-          <div class="tag-filter" onclick="toggleTagFilter('image-quality-assessment')"># image quality assessment</div>
-          <div class="tag-filter" onclick="toggleTagFilter('abstract-perception')"># abstract perception</div>
-          <div class="tag-filter" onclick="toggleTagFilter('robotics')"># robotics</div>
-          <div class="tag-filter" onclick="toggleTagFilter('data-poisoning')"># data poisoning</div>
-          <div class="tag-filter" onclick="toggleTagFilter('synthetic-data')"># synthetic data</div>
-          <div class="tag-filter" onclick="toggleTagFilter('machine-learning')"># machine learning</div>
-          <!-- More tags -->
+          <div class="tag-filter" onclick="toggleTagFilter('self-supervised-learning')"># self-supervised learning</div>
+          <div class="tag-filter" onclick="toggleTagFilter('multimodal')"># multimodal</div>
+          <div class="tag-filter" onclick="toggleTagFilter('trustworthy-ai')"># trustworthy AI</div>
+          <div class="tag-filter" onclick="toggleTagFilter('multi-label-diagnosis')"># multi-label diagnosis</div>
+          <div class="tag-filter" onclick="toggleTagFilter('reconstruction')"># reconstruction</div>
+          <div class="tag-filter" onclick="toggleTagFilter('continual-learning')"># continual learning</div>
+          <div class="tag-filter" onclick="toggleTagFilter('oct')"># OCT</div>
+          <div class="tag-filter" onclick="toggleTagFilter('ct')"># CT</div>
+          <div class="tag-filter" onclick="toggleTagFilter('mri')"># MRI</div>
+          <div class="tag-filter" onclick="toggleTagFilter('denoising')"># denoising</div>
+          <div class="tag-filter" onclick="toggleTagFilter('malware-detection')"># malware detection</div>
         </div>
       </div>
 
@@ -117,7 +119,7 @@ body_attr: >-
   <div class="col-12 col-xl-7 mt-3">
     <div class="text-right mt-0" style="margin-bottom: -3rem;">
       <small style="font-size: 0.75em;">
-        * Equal contribution, <sup>†</sup> Corresponding author
+        Author names follow the notation used on the original homepage.
       </small>
       <span class="text-muted" style="margin-left: 0.3em; margin-right: 0.75em; font-size: 0.7em;">(for publications)</span>
     </div>

@@ -1,32 +1,41 @@
-- date_start: "2026-03"
+- date_start: "2024"
   date_end: ""
-  title: "M.S. / Research Track (예시)"
-  org: "Yonsei University"
-  location: "Seoul, KR"
+  title: "Ph.D. Student, Cyber Science and Engineering"
+  org: "Sichuan University"
+  location: "Chengdu, China"
   type: "education"
-  tags: ["Medical AI", "Continual Learning"]
+  tags: ["Federated Learning", "Image Generation", "AI in Healthcare"]
   bullets:
-    - "Research on continual learning for medical imaging."
-    - "Built evaluation pipelines and curated datasets."
+    - "Research on federated learning, image generation, and privacy-sensitive medical AI."
+    - "Focus on representation learning for distributed and heterogeneous data."
 
-- date_start: "2025-09"
-  date_end: "2026-02"
-  title: "Research Assistant"
-  org: "Yonsei University Health System"
-  location: "Seoul, KR"
+- date_start: "2021"
+  date_end: "2024"
+  title: "Software Engineer"
+  org: "Huawei Cloud Computing Technology Co., Ltd."
+  location: "China"
   type: "experience"
-  tags: ["Medical Informatics", "Deep Learning"]
+  tags: ["Cloud Computing", "Distributed Systems", "Data Analysis"]
   bullets:
-    - "Developed models for multi-joint arthropathy grading."
-    - "Drafted manuscripts and prepared conference submissions."
+    - "Worked on cloud computing systems and large-scale distributed infrastructure."
+    - "Built practical experience in engineering, systems, and data analysis."
 
-- date_start: "2024-06"
-  date_end: "2024-12"
-  title: "Visiting / Program Participant"
-  org: "CMU AI Intensive Education Program"
-  location: "Pittsburgh, PA (Remote/On-site)"
-  type: "experience"
-  tags: ["ML Systems", "Research"]
+- date_start: "2018"
+  date_end: "2021"
+  title: "M.S., Computer Science"
+  org: "Sichuan University"
+  location: "Chengdu, China"
+  type: "education"
+  tags: ["Computer Science", "Medical Imaging"]
   bullets:
-    - "Implemented project experiments and wrote weekly reports."
-    - "Collaborated with peers on model training and analysis."
+    - "Worked on deep learning methods for medical image reconstruction and restoration."
+
+- date_start: "2014"
+  date_end: "2018"
+  title: "B.S., Electronics and Information Engineering"
+  org: "Sichuan University"
+  location: "Chengdu, China"
+  type: "education"
+  tags: ["Electronics", "Information Engineering"]
+  bullets:
+    - "Completed undergraduate study in electronics and information engineering."
