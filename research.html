@@ -7,89 +7,99 @@ body_attr: >-
   data-spy="scroll" data-target="#navbar-year" data-offset="100"
 ---
 
-<!-- BADGE STYLE -->
 <style>
   .tag-filter {
     display: inline-block;
-    padding: 0.35em 0.75em;
-    font-size: 0.75rem;
+    padding: 0.28em 0.65em;
+    font-size: 0.7rem;
     font-weight: 400;
     border-radius: 999px;
-    margin-right: 0.5em;
-    margin-bottom: 0.65em;
+    margin-right: 0.35em;
+    margin-bottom: 0.45em;
     cursor: pointer;
+    background-color: #f4f6f8;
+    color: #6c757d;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .tag-filter:hover {
     background-color: #e9ecef;
-    color: #495057;
-    transition: all 0.2s;
+    color: #1a2238;
   }
 
   .tag-filter.active {
-    background-color: #343a40;
+    background-color: #1a2238;
     color: #fff;
   }
 
   .filter-tab {
     display: inline-flex;
     align-items: center;
-    padding: 0.5em 1em;
-    margin-right: 0.5em;
+    padding: 0.38em 0.9em;
+    margin-right: 0.35em;
+    margin-bottom: 0.5em;
     border-radius: 999px;
-    font-size: 0.75rem;
+    font-size: 0.73rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
-    border: 2px solid transparent;
-    opacity: 0.85;
+    transition: all 0.15s ease-in-out;
+    background-color: #f4f6f8;
+    color: #6c757d;
   }
 
   .filter-tab:hover {
-    opacity: 1;
-    transform: scale(1.03);
+    background-color: #e9ecef;
+    color: #1a2238;
   }
 
   .filter-tab.active {
-    color: #fff !important;
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    opacity: 1;
+    background-color: #1a2238;
+    color: #fff;
   }
 
-  .filter-tab[data-type="all"] {
-    background-color: #343a40;
-    color: white;
+  .pub-year {
+    list-style: none;
+    scroll-margin-top: 6rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8d949c;
+    margin: 1.6rem 0 0.2rem;
+    padding-left: 0;
   }
 
-  .filter-tab[data-type="publication"] {
-    background-color: #007bff;
-    color: white;
+  .pub-year:first-child {
+    margin-top: 0.25rem;
   }
 
-  .filter-tab[data-type="project"] {
-    background-color: #28a745;
-    color: white;
+  .pub-year span {
+    display: inline-block;
+    border-bottom: 2px solid #e2543f;
+    padding-bottom: 0.15em;
   }
-  .filter-tab.active i {
-    filter: brightness(1.3);
+
+  .pub-entry.filtered-out {
+    display: none !important;
+  }
+
+  .pub-year.filtered-out {
+    display: none !important;
   }
 </style>
 
 <div class="row justify-content-center">
   <div class="col-12 col-xl-3 mt-3">
     <div style="position: sticky; top: 96px;">
-      <!-- FILTER TABS -->
-      <div class="mb-1 d-flex flex-wrap align-items-center">
-        <div class="filter-type d-flex flex-wrap align-items-center mb-3">
-          <span class="filter-tab active" data-type="all" onclick="selectType(this, 'all')">
-            <i class="fas fa-stream mr-1"></i> All
-          </span>
-          <span class="filter-tab" data-type="publication" onclick="selectType(this, 'publication')">
-            <i class="fas fa-book-open mr-1"></i> Publications
-          </span>
-        </div>
+      <div class="mb-2 d-flex flex-wrap align-items-center">
+        <span class="filter-tab active" data-type="all" onclick="selectType(this, 'all')">
+          <i class="fas fa-stream mr-1"></i> All
+        </span>
+        <span class="filter-tab" data-type="publication" onclick="selectType(this, 'publication')">
+          <i class="fas fa-book-open mr-1"></i> Publications
+        </span>
       </div>
 
-      <!-- TAG MULTI-FILTER -->
       <div class="mb-3 d-flex flex-wrap align-items-center">
         <div id="tagContainer" class="d-flex flex-wrap">
           <div class="tag-filter" onclick="toggleTagFilter('federated-learning')"># federated learning</div>
@@ -117,49 +127,34 @@ body_attr: >-
   </div>
 
   <div class="col-12 col-xl-7 mt-3">
-    <div class="text-right mt-0" style="margin-bottom: -3rem;">
-      <small style="font-size: 0.75em;">
-        Author names follow the notation used on the original homepage.
-      </small>
-      <span class="text-muted" style="margin-left: 0.3em; margin-right: 0.75em; font-size: 0.7em;">(for publications)</span>
-    </div>
+    <div class="bg-white shadow-sm rounded-xl p-4">
+      <p class="text-muted mb-0" style="font-size: 0.78em;">
+        Venue abbreviations follow each entry in brackets; <em>[TL;DR]</em> expands a short summary and titles link to the paper.
+        <sup>*</sup>equal contribution, <sup>†</sup>corresponding author.
+      </p>
 
-    <!-- GROUP PUBLICATIONS BY YEAR -->
-    {% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+      {% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
 
-    {% for year in pubs_by_year %}
-      {% assign year_types = "" %}
-      {% for item in year.items %}
-        {% unless year_types contains item.type %}
-          {% assign year_types = year_types | append: item.type | append: " " %}
-        {% endunless %}
-      {% endfor %}
-
-      <div class="year-block" data-types="{{ year_types | strip }}">
-        <h4 class="pt-4" id="year-{{ year.name }}">{{ year.name }}</h4>
-        <div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+      <ul class="pub-list mb-0">
+        {% for year in pubs_by_year %}
+          <li class="pub-year" data-year="{{ year.name }}"><span>{{ year.name }}</span></li>
           {% for item in year.items %}
-            <div class="filter-item {% if item.type %}{{ item.type }}{% endif %} {% for tag in item.tags %}{{ tag | slugify }} {% endfor %}">
-              {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
-            </div>
+            {%- capture entry_classes -%}{% if item.type %}{{ item.type }} {% endif %}{% for tag in item.tags %}{{ tag | slugify }} {% endfor %}{%- endcapture -%}
+            {%- assign entry_attrs = 'data-year="' | append: year.name | append: '"' -%}
+            {% include widgets/publication_item.html item=item show_tags=true extra_classes=entry_classes extra_attrs=entry_attrs %}
           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </div>
 
-<!-- JAVASCRIPT FOR FILTERING -->
 <script>
   let currentType = 'all';
   let activeTags = new Set();
 
   function selectType(el, type) {
-    // Remove active class from all
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-      tab.classList.remove('active');
-    });
-    // Add active to selected
+    document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
     el.classList.add('active');
     currentType = type;
     applyFilters();
@@ -178,26 +173,22 @@ body_attr: >-
   }
 
   function applyFilters() {
-    const items = document.getElementsByClassName("filter-item");
-    const yearBlocks = document.getElementsByClassName("year-block");
+    const items = document.querySelectorAll('.pub-entry');
+    const yearHeaders = document.querySelectorAll('.pub-year');
 
-    for (let i = 0; i < items.length; i++) {
-      const typeMatch = (currentType === "all" || items[i].classList.contains(currentType));
-      const tagMatch = Array.from(activeTags).every(tag => items[i].classList.contains(tag));
-      const tagPass = (activeTags.size === 0 || tagMatch);
-      items[i].style.display = (typeMatch && tagPass) ? "block" : "none";
-    }
+    items.forEach(item => {
+      const typeMatch = (currentType === 'all' || item.classList.contains(currentType));
+      const tagMatch = Array.from(activeTags).every(tag => item.classList.contains(tag));
+      const visible = typeMatch && tagMatch;
+      item.classList.toggle('filtered-out', !visible);
+    });
 
-    for (let j = 0; j < yearBlocks.length; j++) {
-      const visibleItems = yearBlocks[j].querySelectorAll(".filter-item");
-      let anyVisible = false;
-      for (let k = 0; k < visibleItems.length; k++) {
-        if (visibleItems[k].style.display !== "none") {
-          anyVisible = true;
-          break;
-        }
-      }
-      yearBlocks[j].style.display = anyVisible ? "block" : "none";
-    }
+    yearHeaders.forEach(header => {
+      const year = header.getAttribute('data-year');
+      const hasVisible = Array.from(items).some(
+        item => item.getAttribute('data-year') === year && !item.classList.contains('filtered-out')
+      );
+      header.classList.toggle('filtered-out', !hasVisible);
+    });
   }
 </script>

@@ -1,0 +1,43 @@
+{%- comment -%}
+  Renders a compact venue abbreviation with the two-digit year, e.g. ICML'26.
+
+  Resolution order:
+    1. The curated table in _data/venue_abbr.yml (exact venue name match)
+    2. A parenthetical acronym inside `pub`, e.g. "... (MICCAI)"
+    3. Initials of the significant words, skipping stop words
+{%- endcomment -%}
+{%- assign _venue = include.pub | default: "" | strip -%}
+{%- assign _year = include.pub_date | default: "" -%}
+{%- assign _abbr = "" -%}
+
+{%- comment -%} 1. Curated table {%- endcomment -%}
+{%- if site.data.venue_abbr -%}
+  {%- assign _abbr = site.data.venue_abbr[_venue] | default: "" -%}
+{%- endif -%}
+
+{%- comment -%} 2. Parenthetical acronym {%- endcomment -%}
+{%- if _abbr == "" and _venue contains "(" -%}
+  {%- assign _abbr = _venue | split: "(" | last | split: ")" | first | strip -%}
+{%- endif -%}
+
+{%- comment -%} 3. Preprints {%- endcomment -%}
+{%- if _abbr == "" and _venue contains "arXiv" -%}
+  {%- assign _abbr = "arXiv" -%}
+{%- endif -%}
+
+{%- comment -%} 4. Derived initials {%- endcomment -%}
+{%- if _abbr == "" -%}
+  {%- assign _words = _venue | replace: "&", "and" | split: " " -%}
+  {%- for _w in _words -%}
+    {%- assign _lw = _w | downcase | strip -%}
+    {%- assign _skip = false -%}
+    {%- if _lw == "of" or _lw == "on" or _lw == "for" or _lw == "and" or _lw == "the" or _lw == "in" -%}
+      {%- assign _skip = true -%}
+    {%- endif -%}
+    {%- if _skip == false and _lw != "" -%}
+      {%- assign _abbr = _abbr | append: _w | slice: 0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{{- _abbr -}}'{{- _year | slice: -2, 2 -}}

@@ -171,3 +171,210 @@ div.lazy {
     font-family: "Courier Prime", monospace;
 }
 
+
+/* ---------------------------------------------------------------------------
+   Publication list
+   Left column: venue badge.  Right column: title / authors / meta.
+   --------------------------------------------------------------------------- */
+.pub-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.pub-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.pub-entry:first-child {
+    padding-top: 0.25rem;
+}
+
+.pub-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0.25rem;
+}
+
+.pub-venue-col {
+    flex: 0 0 4.1rem;
+    text-align: right;
+    padding-top: 0.2rem;
+}
+
+.pub-venue-tag {
+    display: inline-block;
+    padding: 0.18em 0.42em;
+    border-radius: 0.3rem;
+    background-color: #fbeae7;
+    border: 1px solid #f3cec7;
+    color: #c0402c;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.pub-main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.pub-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #1a2238;
+    margin-bottom: 0.28rem;
+}
+
+.pub-title a {
+    color: #1a2238;
+    text-decoration: none;
+}
+
+.pub-title a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.pub-authors {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #7b838b;
+    margin-bottom: 0.22rem;
+}
+
+.pub-authors a.text-body,
+.pub-authors span.text-body {
+    color: #7b838b;
+}
+
+.pub-authors a.text-body:hover {
+    color: #0056b3;
+}
+
+.pub-authors strong {
+    color: #1a2238;
+    font-weight: 600;
+}
+
+.pub-meta {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: #8d949c;
+}
+
+.pub-venue-full {
+    font-style: italic;
+}
+
+.pub-links {
+    white-space: nowrap;
+    margin-left: 0.35em;
+}
+
+.pub-links a {
+    color: #0056b3;
+    text-decoration: none;
+    margin-right: 0.15em;
+}
+
+.pub-links a:hover {
+    color: #e2543f;
+    text-decoration: underline;
+}
+
+.pub-award {
+    margin-top: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #b8860b;
+}
+
+.pub-tags {
+    margin-top: 0.5rem;
+}
+
+.tag-badge {
+    display: inline-block;
+    padding: 0.2em 0.58em;
+    font-size: 0.64rem;
+    border-radius: 999px;
+    margin-right: 0.3em;
+    margin-bottom: 0.25em;
+    background-color: #f4f6f8;
+    color: #939aa1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.pub-abstract {
+    margin-top: 0.55rem;
+    padding: 0.6rem 0.85rem;
+    background-color: #f8f9fa;
+    border-left: 3px solid #e2543f;
+    border-radius: 0 0.35rem 0.35rem 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #6c757d;
+}
+
+@media (max-width: 575.98px) {
+    .pub-entry {
+        display: block;
+    }
+
+    .pub-venue-col {
+        flex: none;
+        text-align: left;
+        margin-bottom: 0.4rem;
+    }
+}
+
+/* Services */
+.service-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.service-list > li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.55;
+}
+
+.service-list > li:last-child {
+    margin-bottom: 0;
+}
+
+.service-list > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background-color: #ff6f61;
+}
+
+.service-year {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-right: 0.4em;
+}
+
+.service-role {
+    font-style: italic;
+    font-weight: 500;
+    color: #1a2238;
+}

@@ -1,0 +1,15 @@
+# Reviewer service and academic activities.
+#
+# `roles` is the summary shown on the homepage. Fill in `years` with the venues
+# you actually reviewed for in each year and it will render above the summary;
+# until then it stays empty and only the summary shows. Example entry:
+#   - year: "2026"
+#     venues: "CVPR, ICML, IJCAI, AAAI, ICLR, ACM MM, NeurIPS"
+
+years: []
+
+roles:
+  - role: "Conference Reviewer"
+    venues: "CVPR, ICCV, ECCV, NeurIPS, ICML, ICLR, AAAI, IJCAI, ACM MM, MICCAI, ISBI, BIBM"
+  - role: "Journal Reviewer"
+    venues: "TPAMI, TIP, TMI, TNNLS, TMM, TRPMS, PR, TOIS, JBHI, MEDIA"

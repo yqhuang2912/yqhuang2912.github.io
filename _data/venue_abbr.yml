@@ -1,0 +1,15 @@
+# Compact abbreviations for the publication list, keyed by the exact `pub` value
+# used in _publications/*/*.md. Venues that already carry a parenthetical
+# acronym (e.g. "... (MICCAI)") do not need an entry here.
+
+"IEEE Transactions on Medical Imaging": "TMI"
+"IEEE Transactions on Radiation and Plasma Medical Sciences": "TRPMS"
+"IEEE Transactions on Image Processing": "TIP"
+"IEEE Transactions on Neural Networks and Learning Systems": "TNNLS"
+"IEEE Transactions on Pattern Analysis and Machine Intelligence": "TPAMI"
+"IEEE Transactions on Multimedia": "TMM"
+"Physics in Medicine & Biology": "PMB"
+"Optics Express": "OE"
+"International Journal of Electrical Power & Energy Systems": "IJEPES"
+"Proceedings of the ACM on Web Conference 2025": "WWW"
+"Proceedings of the ACM Web Conference 2026": "WWW"
